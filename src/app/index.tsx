@@ -1,11 +1,19 @@
-import * as Device from 'expo-device';
+import "../global.css";
+
 import { Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
+import { TodoList } from '@/components/todo-list';
 import { ThemedView } from '@/components/themed-view';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+
+const items = [
+  { id: 'web', label: 'Test for web' },
+  { id: 'android', label: 'Test for android' },
+  { id: 'ios', label: 'Test for iOS' },
+];
 
 export default function HomeScreen() {
   return (
@@ -18,7 +26,7 @@ export default function HomeScreen() {
             If this works, we can ship things. If not… back to logs.
           </ThemedText>
         </ThemedView>
- 
+        <TodoList items={items} />
         {Platform.OS === "web" && <WebBadge />}
       </SafeAreaView>
     </ThemedView>
